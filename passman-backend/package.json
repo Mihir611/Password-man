@@ -1,0 +1,22 @@
+{
+  "name": "passman-backend",
+  "version": "1.0.0",
+  "description": "password manager backend code",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mihir611/Password-man.git"
+  },
+  "keywords": [
+    "passman"
+  ],
+  "author": "Mihir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mihir611/Password-man/issues"
+  },
+  "homepage": "https://github.com/Mihir611/Password-man#readme"
+}
