@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors')
 let database
 let registerCollection
 
@@ -20,6 +21,7 @@ function initialize () {
             app.use(express.static('pages'));
             app.use(bodyParser.urlencoded({extended: false}));
             app.use(bodyParser.json());
+            app.use(cors());
             registerCollection = database.collection("Register");
             console.log("Connected to DB");
             // const loginCollection = client.db("Passwords").collection("login");
