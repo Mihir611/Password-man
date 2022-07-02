@@ -1,42 +1,18 @@
 import React from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignUp from './src/pages/signUp';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <View>
-          <Text>
-            A Simple Password manager to save all your passwords saftely and
-            securely
-          </Text>
-        </View>
-        <View>
-          <Text>Actions</Text>
-        </View>
-        <View>
-          <TouchableOpacity>
-            <Text>Retrive Passwords</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Add New Passwords</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={SignUp} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

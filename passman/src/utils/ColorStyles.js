@@ -5,7 +5,10 @@ const ColorStyles = StyleSheet.create({
         backgroundColor:'#101010'
     },
     textColor : {
-        color:'#51087E'
+        color:'#B24BF3',
+    },
+    footerLoginText:{
+        color:"#BEAFC2"
     }
 })
 
