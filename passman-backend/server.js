@@ -28,9 +28,9 @@ function initialize () {
             // const assetCollection = client.db("Passwords").collection("Passman");
 
             //handel Login
-            // app.post('Passman/login',function(req,res) {
-            //     handelLogin(req.body,res,loginCollection);
-            // });
+            app.post('Passman/login',function(req,res) {
+                handelLogin(req.body,res);
+            });
 
             app.post('/Passman/register',function(req,res){
                 handelRegister(req.body,res);
@@ -50,7 +50,7 @@ app.listen(3000,function(){
 
 //functions 
 function handelRegister(credentials,res) {
-    let query = {
+    let inputData = {
         "First_Name": credentials.First_Name,
         "Last_Name": credentials.Last_Name,
         "User_Name": credentials.User_Name,
@@ -58,6 +58,18 @@ function handelRegister(credentials,res) {
         "Login_Password": credentials.Login_Password,
         "Phone_Number": credentials.Phone_Number
     }
-    registerCollection.insertOne(query)
-    res.json({"response_desc":"Registered Successfully"});
+    registerCollection.insertOne(inputData).then((result) => {
+        res.json({"response_desc":"Registered Successfully"});
+    }).catch((err) => {
+        res.json({"response_desc":"Internal Server Error"});
+    })
+}
+
+function handelLogin(credentials, res) {
+    let query = {}
+    registerCollection.find(query,{projection:{_id:0}}).toArray().then((result) => {
+        res.json({"response_desc":"Login Success","response_code":"0"});
+    }).catch((err) => {
+        res.json({"response_desc":"Internal Server Error"});
+    })
 }
