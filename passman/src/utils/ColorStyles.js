@@ -9,6 +9,9 @@ const ColorStyles = StyleSheet.create({
     },
     footerLoginText:{
         color:"#BEAFC2"
+    },
+    Link:{
+        textDecorationLine:'underline'
     }
 })
 

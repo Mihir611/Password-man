@@ -56,8 +56,45 @@ const MainStyle = StyleSheet.create({
         textAlign:'center',
         fontSize:12,
         textDecorationLine:'underline'
-    }
+    },
     //#endregion RegistrationStyles
+
+    //#region LoginStyles
+    LoginHeaderView:{
+        flex:0.3
+    },
+    LoginHeaderText:{
+        fontSize:30,
+        textAlign:'center',
+        marginTop:'10%'
+    },
+    LoginHeaderSubText:{
+        textAlign:'center',
+        marginTop:'5%'
+    },
+    LoginBodyView:{
+        flex:0.4
+    },
+    LoginTextboxesView:{
+        margin:'5%'
+    },
+    LoginButtonView:{
+        flex:0.2
+    },
+    LoginButton:{
+        margin:'5%'
+    },
+    LoginForgotPasswordView:{
+        marginTop:'4%'
+    },
+    forgotPassword:{
+        textAlign:'right'
+    },
+    signUpView:{
+        flexDirection:'row',
+        justifyContent:'center'
+    },
+    //#endregion LoginStyles
 })
 
 export default MainStyle
