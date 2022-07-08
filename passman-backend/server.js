@@ -28,7 +28,7 @@ function initialize () {
             // const assetCollection = client.db("Passwords").collection("Passman");
 
             //handel Login
-            app.post('Passman/login',function(req,res) {
+            app.post('/Passman/login',function(req,res) {
                 handelLogin(req.body,res);
             });
 
@@ -43,8 +43,8 @@ function initialize () {
     });
 }
 
-app.listen(3000,function(){
-    console.log("Listening on port 3000");
+app.listen(3400,function(){
+    console.log("Listening on port 3400");
     initialize();
 });
 
@@ -66,9 +66,16 @@ function handelRegister(credentials,res) {
 }
 
 function handelLogin(credentials, res) {
-    let query = {}
-    registerCollection.find(query,{projection:{_id:0}}).toArray().then((result) => {
-        res.json({"response_desc":"Login Success","response_code":"0"});
+    let query = {
+        "Mail_ID":credentials.Mail_ID ,
+    }
+    registerCollection.find(query,{projection:{_id:0,First_Name:0,Last_Name:0,Phone_Number:0}}).toArray().then((result) => {
+        console.log(result[0])
+        if(result[0].Mail_ID === credentials.Mail_ID && result[0].Login_Password === credentials.Login_Password){
+            res.json({"response_desc":"Login Success","response_code":"0"});
+        } else {
+            res.json({"response_desc":"Please check Mail Id and Password","response_code":"1"});
+        }
     }).catch((err) => {
         res.json({"response_desc":"Internal Server Error"});
     })
