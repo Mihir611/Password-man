@@ -123,7 +123,9 @@ const MainStyle = StyleSheet.create({
     //#endregion HomeStyles
 
     //#region ActionScreen
-    
+    flatListStyles:{
+        margin:'5%'
+    }
     //#endregion ActionScreen
 })
 
