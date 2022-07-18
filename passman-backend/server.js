@@ -23,6 +23,7 @@ function initialize () {
             app.use(bodyParser.json());
             app.use(cors());
             registerCollection = database.collection("Register");
+            passwordCollection = database.collection("PassmanCollection");
             console.log("Connected to DB");
             // const loginCollection = client.db("Passwords").collection("login");
             // const assetCollection = client.db("Passwords").collection("Passman");
@@ -36,9 +37,9 @@ function initialize () {
                 handelRegister(req.body,res);
             });
 
-            // app.post('Passman/getData',function(req,res) {
-            //     handelGetPasswords(req.body,res,assetCollection);
-            // });
+            app.post('/Passman/list_Passwords',function(req,res) {
+                handelGetPasswords(req.body,res);
+            });
         }
     });
 }
@@ -70,7 +71,6 @@ function handelLogin(credentials, res) {
         "Mail_ID":credentials.Mail_ID ,
     }
     registerCollection.find(query,{projection:{_id:0,First_Name:0,Last_Name:0,Phone_Number:0}}).toArray().then((result) => {
-        console.log(result[0])
         if(result[0].Mail_ID === credentials.Mail_ID && result[0].Login_Password === credentials.Login_Password){
             res.json({"response_desc":"Login Success","response_code":"0"});
         } else {
@@ -78,5 +78,20 @@ function handelLogin(credentials, res) {
         }
     }).catch((err) => {
         res.json({"response_desc":"Internal Server Error"});
+    })
+}
+
+function handelGetPasswords(credentials, res) {
+    let query = {
+        "UserId":credentials.UserId
+    }
+    passwordCollection.find(query,{projection:{_id:0}}).toArray().then((result) => {
+        if(result.length > 0) {
+            res.json({"response_desc":"Operation Success","response_code":"0","response_data":result[0].Data});
+        } else {
+            res.json({"response_desc":"The user id not found","response_code":"1","response_data":{}});
+        }
+    }).catch((err) => {
+        res.json({"respose_desc":"Internal Server Error","response_data":err})
     })
 }

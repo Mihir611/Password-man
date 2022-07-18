@@ -119,9 +119,12 @@ const MainStyle = StyleSheet.create({
     },
     LoginImport:{
         flex:0.8,
-        margin:'5%'
-    }
+    },
     //#endregion HomeStyles
+
+    //#region ActionScreen
+    
+    //#endregion ActionScreen
 })
 
 export default MainStyle
