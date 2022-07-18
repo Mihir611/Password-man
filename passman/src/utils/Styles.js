@@ -95,6 +95,33 @@ const MainStyle = StyleSheet.create({
         justifyContent:'center'
     },
     //#endregion LoginStyles
+
+    //#region HomeStyles
+    homeHeaderText:{
+        justifyContent:'center',
+        alignItems:'center',
+        flex:0.1
+    },
+    listButtonView:{
+        flexDirection:'row',
+        flex:0.1,
+        justifyContent:'space-between',
+    },
+    listButtons:{
+        borderWidth:1,
+        borderColor:'#808080',
+        margin:'4%',
+        borderTopLeftRadius:25,
+        borderBottomEndRadius:25
+    },
+    listButtonText:{
+        padding:'3%'
+    },
+    LoginImport:{
+        flex:0.8,
+        margin:'5%'
+    }
+    //#endregion HomeStyles
 })
 
 export default MainStyle
